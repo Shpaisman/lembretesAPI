@@ -20,9 +20,17 @@ public class StoreController {
     }
 
     @GetMapping({"/{id}"})
-    public Mono<StoreDTO> getLabel(@PathVariable Integer id){
-        return storeService.getLabel(id);
+    public Mono<StoreDTO> getReminder(@PathVariable Integer id){
+        return storeService.getReminder(id);
     }
 
+    @PutMapping({"/{id}"})
+    public Mono<StoreDTO> updateReminder(@RequestBody StoreDTO store, @PathVariable Integer id){
+        return storeService.updateReminder(store, id);
+    }
 
+    @DeleteMapping({"/{id}"})
+    public Mono<Void> deleteReminder(@PathVariable Integer id){
+        return storeService.deleteReminder(id);
+    }
 }
