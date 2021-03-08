@@ -3,6 +3,7 @@ package maua.lojaBack.storeAPI.controller;
 import maua.lojaBack.storeAPI.model.StoreDTO;
 import maua.lojaBack.storeAPI.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -15,6 +16,7 @@ public class StoreController {
     private StoreService storeService;
 
     @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<StoreDTO> postReminder(@RequestBody StoreDTO store){
         return storeService.postReminder(store);
     }
@@ -30,6 +32,7 @@ public class StoreController {
     }
 
     @DeleteMapping({"/{id}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> deleteReminder(@PathVariable Integer id){
         return storeService.deleteReminder(id);
     }
